@@ -11,12 +11,17 @@
     <div class="container">
     	<h1>Categorias da Tarefa</h1>
     
-		  <form  th:action="@{/salvarCategoria}" th:object="${categoria}" method="post" >
+		  <form  th:action="@{/usuarios/salvarUsuario}" th:object="${usuario}" method="post" >
 		  	<input type="hidden" th:field="*{id}">
 		  
 			  <div class="mb-3">
 			    <label for="nome" class="form-label">Nome</label>
 			    <input type="text" class="form-control" id="nome" th:field="*{nome}" >
+			  </div>
+			  
+			  			  <div class="mb-3">
+			    <label for="nome" class="form-label">Senha</label>
+			    <input type="password" class="form-control" id="senha" th:field="*{senha}" >
 			  </div>
 			  
 			  <button type="submit" class="btn btn-primary">Enviar</button>

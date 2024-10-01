@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sesi.tarefas.model.TarefaCategoria;
 import com.sesi.tarefas.repository.TarefaCategoriaRepository;
@@ -22,7 +24,7 @@ public class TarefaCategoriaController {
 	
 	@GetMapping("/listarCategoria")
 	public String listarCategoria(Model modelo) {
-		//modelo.addAttribute("categorias", tarefaCategoriaRepository.findAll());
+		modelo.addAttribute("categorias", tarefaCategoriaRepository.findAll());
 		return "listarTarefaCategoria";
 	}
 	
@@ -39,8 +41,21 @@ public class TarefaCategoriaController {
 	}
 	
 	@GetMapping("/formularioTarefaCategoria")
-	public String mostrarFormulario() {
+	public String mostrarFormulario(Model modelo) {
+		modelo.addAttribute("categoria", new TarefaCategoria());
 		return "formularioTarefaCategoria";
+	}
+	
+	@PostMapping("/salvarCategoria")
+	public String salvarCategoria(@ModelAttribute TarefaCategoria categoria) {
+		tarefaCategoriaRepository.save(categoria);
+		return "redirect:/listarCategoria";
+	}
+	
+	@GetMapping("/excluirCategoria/{id}")
+	public String excluirCategoria(@PathVariable("id") int id) {
+		tarefaCategoriaRepository.deleteById(id);
+		return "redirect:/listarCategoria";
 	}
 	
 }
