@@ -34,23 +34,21 @@
 		      <td th:text="${tarefa.prioridade}" ></td>
 		      <td th:text="${tarefa.status}" ></td>
 		  
+		  		  
 		  
-		  
-		  
-		  
-		  
-		  
-		  
-		    <!-- 
+		   
 		    <td>
-		    	<a th:href="@{/usuarios/editarUsuario/{id} (id=${usuario.id})}"> 
+		     
+		    	<a th:href="@{/tarefas/editarTarefa/{id} (id=${tarefa.id})}"> 
 		    		<button type="button" class="btn btn-primary">Editar</button>
 		    	</a>
-		    	<a th:href="@{/usuarios/excluirUsuario/{id} (id=${usuario.id})}"> 
+		    	
+		    	 
+		    	<a th:href="@{/tarefas/removerTarefa/{id} (id=${tarefa.id})}"> 
 		 		   	<button type="button" class="btn btn-danger">Excluir</button>
 		    	</a>
 		    </td>
-		      -->
+		    
 		    </tr>
 		   
 		   
